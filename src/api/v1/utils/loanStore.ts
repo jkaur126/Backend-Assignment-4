@@ -112,3 +112,4 @@ export const deleteLoan = (id: string): LoanApplication => {
   const [deletedLoan] = loans.splice(index, 1);
   return { ...deletedLoan };
 };
+
