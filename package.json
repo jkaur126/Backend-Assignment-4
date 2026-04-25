@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "High-Risk Loan Application Monitoring System backend",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc --project tsconfig.json",
+    "start": "node dist/server.js",
+    "test": "tsc --project tsconfig.test.json && node dist-test/test/run-tests.js",
+    "lint": "eslint ."
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^13.8.0",
+    "morgan": "^1.10.1",
+    "prisma": "^5.22.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.17",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^20.4.1",
+    "@types/supertest": "^7.2.0",
+    "eslint": "^10.2.1",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^8.59.0"
+  }
+}

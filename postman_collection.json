@@ -1,0 +1,87 @@
+{
+  "info": {
+    "name": "M4-CHANGE-ME-STUDENT-ID",
+    "_postman_id": "90cd1c47-cf9b-4c69-8ed2-01e8495359d2",
+    "description": "High-Risk Loan Application Monitoring System collection.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "health"]
+        }
+      }
+    },
+    {
+      "name": "Get Loans",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{idToken}}" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/loans",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "loans"]
+        }
+      }
+    },
+    {
+      "name": "Create Loan",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{idToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"applicant\":\"High Risk Applicant\",\"amount\":125000,\"riskScore\":88,\"status\":\"under_review\"}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/loans",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "loans"]
+        }
+      }
+    },
+    {
+      "name": "Update Loan",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{idToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"flagged\",\"notes\":\"Escalated for fraud review.\"}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/loans/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "loans", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Loan",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{idToken}}" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/loans/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "loans", "1"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000" },
+    { "key": "idToken", "value": "" }
+  ]
+}

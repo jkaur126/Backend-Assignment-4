@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const loanController_1 = require("../controllers/loanController");
+const authenticate_1 = require("../middleware/authenticate");
+const authorize_1 = require("../middleware/authorize");
+const router = (0, express_1.Router)();
+router.get("/", authenticate_1.authenticate, (0, authorize_1.authorize)({ allowedRoles: ["analyst", "manager", "admin"] }), loanController_1.getLoans);
+router.get("/:id", authenticate_1.authenticate, (0, authorize_1.authorize)({ allowedRoles: ["analyst", "manager", "admin"] }), loanController_1.getLoan);
+router.post("/", authenticate_1.authenticate, (0, authorize_1.authorize)({ allowedRoles: ["manager", "admin"] }), loanController_1.postLoan);
+router.patch("/:id", authenticate_1.authenticate, (0, authorize_1.authorize)({ allowedRoles: ["manager", "admin"] }), loanController_1.patchLoan);
+router.delete("/:id", authenticate_1.authenticate, (0, authorize_1.authorize)({ allowedRoles: ["admin"] }), loanController_1.removeLoan);
+exports.default = router;
